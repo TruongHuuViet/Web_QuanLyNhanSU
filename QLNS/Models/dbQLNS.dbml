@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QUANLYNHANSU2" Class="dbQLNSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.CHUCNANG" Member="CHUCNANGs">
+    <Type Name="CHUCNANG">
+      <Column Name="MACHUCNANG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENCHUCNANG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="CHUCNANG_PHANQUYEN" Member="PHANQUYENs" ThisKey="MACHUCNANG" OtherKey="MACHUCNANG" Type="PHANQUYEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHANQUYEN" Member="PHANQUYENs">
+    <Type Name="PHANQUYEN">
+      <Column Name="MACHUCNANG" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MANV" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="CHUCNANG_PHANQUYEN" Member="CHUCNANG" ThisKey="MACHUCNANG" OtherKey="MACHUCNANG" Type="CHUCNANG" IsForeignKey="true" />
+      <Association Name="tb_NHANVIEN_PHANQUYEN" Member="tb_NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="tb_NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_BOPHAN" Member="tb_BOPHANs">
+    <Type Name="tb_BOPHAN">
+      <Column Name="IDBP" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENBP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tb_BOPHAN_tb_NHANVIEN" Member="tb_NHANVIENs" ThisKey="IDBP" OtherKey="IDBP" Type="tb_NHANVIEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_CHUCVU" Member="tb_CHUCVUs">
+    <Type Name="tb_CHUCVU">
+      <Column Name="IDCV" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENCV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tb_CHUCVU_tb_NHANVIEN" Member="tb_NHANVIENs" ThisKey="IDCV" OtherKey="IDCV" Type="tb_NHANVIEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_DANTOC" Member="tb_DANTOCs">
+    <Type Name="tb_DANTOC">
+      <Column Name="IDDT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENDT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tb_DANTOC_tb_NHANVIEN" Member="tb_NHANVIENs" ThisKey="IDDT" OtherKey="IDDT" Type="tb_NHANVIEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_PHONGBAN" Member="tb_PHONGBANs">
+    <Type Name="tb_PHONGBAN">
+      <Column Name="IDPB" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENPB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tb_PHONGBAN_tb_NHANVIEN" Member="tb_NHANVIENs" ThisKey="IDPB" OtherKey="IDPB" Type="tb_NHANVIEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_TONGIAO" Member="tb_TONGIAOs">
+    <Type Name="tb_TONGIAO">
+      <Column Name="IDTG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENTG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tb_TONGIAO_tb_NHANVIEN" Member="tb_NHANVIENs" ThisKey="IDTG" OtherKey="IDTG" Type="tb_NHANVIEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_TRINHDO" Member="tb_TRINHDOs">
+    <Type Name="tb_TRINHDO">
+      <Column Name="IDTD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENTD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tb_TRINHDO_tb_NHANVIEN" Member="tb_NHANVIENs" ThisKey="IDTD" OtherKey="IDTD" Type="tb_NHANVIEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_NHANVIEN" Member="tb_NHANVIENs">
+    <Type Name="tb_NHANVIEN">
+      <Column Name="MANV" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HOTEN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GIOITINH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NGAYSINH" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DIENTHOAI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MATKHAU" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CCCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="HINHANH" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="IDPB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDBP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDCV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDTD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDDT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDTG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tb_NHANVIEN_PHANQUYEN" Member="PHANQUYENs" ThisKey="MANV" OtherKey="MANV" Type="PHANQUYEN" />
+      <Association Name="tb_NHANVIEN_BANGLUONG" Member="BANGLUONGs" ThisKey="MANV" OtherKey="MANV" Type="BANGLUONG" />
+      <Association Name="tb_NHANVIEN_tb_KYLUAT" Member="tb_KYLUATs" ThisKey="MANV" OtherKey="MANV" Type="tb_KYLUAT" />
+      <Association Name="tb_NHANVIEN_tb_KHENTHUONG" Member="tb_KHENTHUONGs" ThisKey="MANV" OtherKey="MANV" Type="tb_KHENTHUONG" />
+      <Association Name="tb_NHANVIEN_tb_BANGCONG" Member="tb_BANGCONGs" ThisKey="MANV" OtherKey="MANV" Type="tb_BANGCONG" />
+      <Association Name="tb_NHANVIEN_DONDUYET" Member="DONDUYETs" ThisKey="MANV" OtherKey="MANV" Type="DONDUYET" />
+      <Association Name="tb_BOPHAN_tb_NHANVIEN" Member="tb_BOPHAN" ThisKey="IDBP" OtherKey="IDBP" Type="tb_BOPHAN" IsForeignKey="true" />
+      <Association Name="tb_CHUCVU_tb_NHANVIEN" Member="tb_CHUCVU" ThisKey="IDCV" OtherKey="IDCV" Type="tb_CHUCVU" IsForeignKey="true" />
+      <Association Name="tb_DANTOC_tb_NHANVIEN" Member="tb_DANTOC" ThisKey="IDDT" OtherKey="IDDT" Type="tb_DANTOC" IsForeignKey="true" />
+      <Association Name="tb_PHONGBAN_tb_NHANVIEN" Member="tb_PHONGBAN" ThisKey="IDPB" OtherKey="IDPB" Type="tb_PHONGBAN" IsForeignKey="true" />
+      <Association Name="tb_TONGIAO_tb_NHANVIEN" Member="tb_TONGIAO" ThisKey="IDTG" OtherKey="IDTG" Type="tb_TONGIAO" IsForeignKey="true" />
+      <Association Name="tb_TRINHDO_tb_NHANVIEN" Member="tb_TRINHDO" ThisKey="IDTD" OtherKey="IDTD" Type="tb_TRINHDO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BANGLUONG" Member="BANGLUONGs">
+    <Type Name="BANGLUONG">
+      <Column Name="MALUONG" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENNV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MANV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SONGAYLAM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HESOLUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="THUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TONGLUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="tb_NHANVIEN_BANGLUONG" Member="tb_NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="tb_NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_KYLUAT" Member="tb_KYLUATs">
+    <Type Name="tb_KYLUAT">
+      <Column Name="MAKYLUAT" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MANV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LYDO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TENNV" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="NGAYTAO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tb_NHANVIEN_tb_KYLUAT" Member="tb_NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="tb_NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_KHENTHUONG" Member="tb_KHENTHUONGs">
+    <Type Name="tb_KHENTHUONG">
+      <Column Name="MAKHENTHUONG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MANV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LYDO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TENNV" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="NGAYTAO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tb_NHANVIEN_tb_KHENTHUONG" Member="tb_NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="tb_NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_BANGCONG" Member="tb_BANGCONGs">
+    <Type Name="tb_BANGCONG">
+      <Column Name="MACONG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENNV" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MANV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TENCV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TENPB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NGAYGIOLAM" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NGAYGIORA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TONGGIOLAM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tb_NHANVIEN_tb_BANGCONG" Member="tb_NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="tb_NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HOTRO" Member="HOTROs">
+    <Type Name="HOTRO">
+      <Column Name="MAHOTRO" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENDONVI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DONDUYET" Member="DONDUYETs">
+    <Type Name="DONDUYET">
+      <Column Name="MADON" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MANV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HOTEN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NGAYLAPPHIEU" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LYDO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NGAYXINNGHI" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PHONGBAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NGAYSINH" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tb_NHANVIEN_DONDUYET" Member="tb_NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="tb_NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
